@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Campus Diaries | Registration Page</title>
+
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	th:href="@{/admin/plugins/fontawesome-free/css/all.min.css}" />
+<!-- icheck bootstrap -->
+<link rel="stylesheet"
+	th:href="@{/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css}" />
+<!-- Theme style -->
+<link rel="stylesheet" th:href="@{/admin/dist/css/adminlte.min.css}" />
+<style>
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	padding: 20px;
+}
+</style>
+</head>
+<body class="hold-transition register-page">
+	<video autoplay muted loop id="myVideo">
+		<source th:src="@{/admin/bg.mp4}" type="video/mp4" />
+	</video>
+	<div class="register-box">
+		<div class="register-logo">
+			<a href="#"><b>Campus </b> Diaries</a>
+		</div>
+
+		<div class="card">
+			<div class="card-body register-card-body">
+				<h3 class="login-box-msg">Profile</h3>
+
+				
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="firstName"
+							placeholder="First name"  readonly required th:value="${user.firstName}" />
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" readonly name="lastName"
+							placeholder="Last name"  th:value="${user.lastName}" required />
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<input type="email" name="email"  th:value="${user.email}" readonly class="form-control"
+							placeholder="Email" required />
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-envelope"></span>
+							</div>
+						</div>
+					</div>
+
+					
+
+					<div class="input-group mb-3">
+						<input required type="text"   th:value="${user.phone}" readonly name="phone" class="form-control"
+							placeholder="Phone" />
+							
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-mobile"></span>
+							</div>
+						</div>						
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<a th:href="@{/admin/edit-profile}">
+								<button type="button" class="btn btn-primary btn-block">
+									Edit Profile</button>
+							</a>
+						</div>
+						<div class="col-6">
+							<a th:href="@{/admin/edit-profile}">
+								<button type="button" class="btn btn-primary btn-block">
+									Change Password</button>
+							</a>
+						</div>
+
+					</div>
+				
+
+
+				<div class="row">
+				<div class="col-12" >
+					<a th:href="@{/admin}" class="text-center">Back
+						to Dashboard</a>
+				</div>
+			</div>
+			<!-- /.form-box -->
+		</div>
+		<!-- /.card -->
+	</div>
+	<!-- /.register-box -->
+
+	<!-- jQuery -->
+	<script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>
+	<!-- Bootstrap 4 -->
+	<script th:src="@{/admin/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<!-- AdminLTE App -->
+	<script th:src="@{/admin/dist/js/adminlte.min.js}"></script>
+	
+	<th:block th:if="${session.msg}">
+    <script>alert("[[${session.msg}]]")</script>
+    <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+    </th:block>
+    
+</body>
+</html>

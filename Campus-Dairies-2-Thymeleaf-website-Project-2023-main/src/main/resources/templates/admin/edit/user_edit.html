@@ -1,0 +1,119 @@
+<!DOCTYPE html> 
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="admin/index"> 
+<head> 
+    <title>User Edit</title> 
+</head> 
+<body> 
+
+ <div layout:fragment="content1"> 
+<div class="content-wrapper"> 
+    <!-- Content Header (Page header) --> 
+    <section class="content-header"> 
+      <div class="container-fluid"> 
+        <div class="row mb-2"> 
+          <div class="col-sm-6"> 
+          </div> 
+          <div class="col-sm-6"> 
+            <ol class="breadcrumb float-sm-right"> 
+              <li class="breadcrumb-item"><a href="#">Home</a></li> 
+              <li class="breadcrumb-item active">User</li> 
+            </ol> 
+          </div> 
+        </div> 
+      </div><!-- /.container-fluid --> 
+    </section> 
+ 
+    <!-- Main content --> 
+    <section class="content"> 
+      <div class="container-fluid"> 
+        <div class="row"> 
+          <!-- left column --> 
+          <div class="col-md-12"> 
+            <!-- jquery validation --> 
+            <div class="card card-primary"> 
+              <div class="card-header"> 
+              <h3>User Update</h3> 
+              </div> 
+              <!-- /.card-header --> 
+              <!-- form start --> 
+              <form id="quickForm"  method= "post" th:action= "@{/admin/user/save}" th:object="${user}"> 
+                <div class="card-body"> 
+				<div class="form-group"> 
+				                    <label for="id">Id</label> 
+				                    <input type="text" name="id" class="form-control" id="id" placeholder="Enter Id "th:value="${user.getId()}" readonly = "readonly"> 
+				                  </div> 
+				<div class="form-group"> 
+				                    <label for="name">Name</label> 
+				                    <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name "th:value="${user.getName()}"> 
+				                  </div> 
+				<div class="form-group"> 
+				                    <label for="phone">Phone</label> 
+				                    <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter Phone "th:value="${user.getPhone()}"> 
+				                  </div> 
+				<div class="form-group"> 
+				                    <label for="email">Email</label> 
+				                    <input type="text" name="email" class="form-control" id="email" placeholder="Enter Email "th:value="${user.getEmail()}"> 
+				                  </div> 
+				<div class="form-group"> 
+				                    <label for="password">Password</label> 
+				                    <input type="text" name="password" class="form-control" id="password" placeholder="Enter Password "th:value="${user.getPassword()}"> 
+				                  </div> 
+                  <div class="form-group"> 
+				                    <label for="role">Role</label> 
+									 <select id="color" name="color" th:field="${user.role}" >
+								        <option th:value="Admin">Admin</option>
+								        <option th:value="Student">Student</option>
+								        <option th:value="Staff">Staff</option>
+								        <option th:value="Tamp_Student">Guest Student</option>
+								     </select>
+				                  </div> 
+				<div class="form-group"> 
+				        <label for="gender">Status</label>
+				        
+				            <div class="form-check">
+				                <input type="radio" id="status" name="status"  value="1" th:field="*{status}">
+				                <label class="form-check-label" for="status">Active</label>
+				            </div>
+				            <div class="form-check">
+				                <input type="radio" id="status" name="status"  value="0" th:field="*{status}" checked>
+				                <label class="form-check-label" for="status">Inactive</label>
+				            </div>
+				         </div>
+				<div class="form-group"> 
+				                    <label for="entryDate">Entry Date</label> 
+				                    <input type="date" name="entryDate" class="form-control" id="entryDate" placeholder="Enter Entry Date "th:value="${user.getEntryDate()}"> 
+				                  </div> 
+				<div class="form-group"> 
+				                    <label for="logoutDate">Logout Date</label> 
+				                    <input type="date" name="logoutDate" class="form-control" id="logoutDate" placeholder="Enter Logout Date "th:value="${user.getLogoutDate()}"> 
+				                  </div> 
+				                   
+                   
+                </div> 
+                <!-- /.card-body --> 
+                <div class="card-footer"> 
+                  <button type="submit" class="btn btn-primary btn-sm">UPDATE</button> 
+                  <a th:href="@{/admin/user/index}"><button type="button" class="btn btn-dark btn-sm">BACK</button></a> 
+                </div> 
+              </form> 
+            </div> 
+            <!-- /.card --> 
+            </div> 
+          <!--/.col (left) --> 
+          <!-- right column --> 
+          <div class="col-md-6"> 
+ 
+          </div> 
+          <!--/.col (right) --> 
+        </div> 
+        <!-- /.row --> 
+      </div><!-- /.container-fluid --> 
+    </section> 
+    <!-- /.content --> 
+  </div> 
+  </div> 
+<section layout:fragment= "script1">
+</section>
+
+ </body>
+ <html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="admin/index">
+
+<head>
+	<title>StudentMaster Entry</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content1">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6"></div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">StudentMaster</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<!-- left column -->
+						<div class="col-md-12">
+							<!-- jquery validation -->
+							<div class="card card-primary">
+								<div class="card-header">
+									<h3>StudentMaster Entry</h3>
+								</div>
+								<!-- /.card-header -->
+								<!-- form start -->
+								<form id="quickForm" method="post" th:action="@{/studentMaster/save}"
+									enctype="multipart/form-data">
+									<div class="card-body">
+										<div class="form-group">
+											<label for="user">User</label> <select th:field="${studentMaster.user}"
+												name="user" class="form-control col-md-3">
+												<option th:each="user:${listUsers}" th:text="${user.getName()}"
+													th:value="${user.getId()}"></option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="gender">Gender</label>
+
+											<div class="form-check">
+												<input type="radio" id="gender" name="gender" value="male"
+													th:field="${studentMaster.gender}"> <label class="form-check-label"
+													for="gender">Male</label>
+											</div>
+											<div class="form-check">
+												<input type="radio" id="gender" name="gender" value="female"
+													th:field="${studentMaster.gender}" checked> <label
+													class="form-check-label" for="gender">Female</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="phone">Phone</label> <input type="text" name="phone"
+												class="form-control" id="phone" placeholder="Enter Phone "
+												th:field="${studentMaster.phone}">
+										</div>
+										<div class="form-group">
+											<label for="photo">Photo</label> <input type="file" name="file"
+												accept="image/*" class="form-control" id="file"
+												placeholder="Enter Photo ">
+										</div>
+										<div class="form-group">
+											<label for="city">City</label> <input type="text" name="city"
+												class="form-control" id="city" placeholder="Enter City "
+												th:field="${studentMaster.city}">
+										</div>
+										<div class="form-group">
+											<label for="department">Department</label> <input type="text"
+												name="department" class="form-control" id="department"
+												placeholder="Enter Department " th:field="${studentMaster.department}">
+										</div>
+										<div class="form-group">
+											<label for="course">Course</label> <input type="text" name="course"
+												class="form-control" id="course" placeholder="Enter Course "
+												th:field="${studentMaster.course}">
+										</div>
+										<div class="form-group">
+											<label for="semester">Semester</label> <input type="text" name="semester"
+												class="form-control" id="semester" placeholder="Enter Semester "
+												th:field="${studentMaster.semester}">
+										</div>
+
+
+									</div>
+									<!-- /.card-body -->
+									<div class="card-footer">
+										<button type="submit" class="btn btn-primary btn-sm">SUBMIT</button>
+										<a th:href="@{/studentMaster/index}"><button type="button"
+												class="btn btn-dark btn-sm">BACK</button></a>
+									</div>
+								</form>
+							</div>
+							<!-- /.card -->
+						</div>
+						<!--/.col (left) -->
+						<!-- right column -->
+						<div class="col-md-6"></div>
+						<!--/.col (right) -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+	<section layout:fragment="script1">
+		<script th:src="@{/admin/plugins/jquery-validation/jquery.validate.min.js}"></script>
+		<script th:src="@{/admin/plugins/jquery-validation/additional-methods.min.js}"></script>
+		<script>
+			$(function () {
+				$.validator.setDefaults({
+					submitHandler: function () {
+						document.getElementById("quickForm").submit();
+						alert("Form successful submitted!");
+					}
+				});
+				$('#quickForm')
+					.validate({
+						rules: {
+							user: {
+								required: true,
+							},
+							name: {
+								required: true,
+							},
+							gender: {
+								required: true,
+							},
+							phone: {
+								required: true,
+							},
+							file: {
+								required: true,
+							},
+							city: {
+								required: true,
+							},
+							department: {
+								required: true,
+							},
+							course: {
+								required: true,
+							},
+							semester: {
+								required: true,
+							},
+						},
+						messages: {
+							user: {
+								required: "Please enter a user",
+							},
+							name: {
+								required: "Please enter a name",
+							},
+							gender: {
+								required: "Please enter a gender",
+							},
+							phone: {
+								required: "Please enter a phone",
+							},
+							file: {
+								required: "Please enter a photo",
+							},
+							city: {
+								required: "Please enter a city",
+							},
+							department: {
+								required: "Please enter a department",
+							},
+							course: {
+								required: "Please enter a course",
+							},
+							semester: {
+								required: "Please enter a semester",
+							},
+						},
+						errorElement: 'span',
+						errorPlacement: function (error, element) {
+							error.addClass('invalid-feedback');
+							element.closest('.form-group')
+								.append(error);
+						},
+						highlight: function (element, errorClass,
+							validClass) {
+							$(element).addClass('is-invalid');
+						},
+						unhighlight: function (element, errorClass,
+							validClass) {
+							$(element).removeClass('is-invalid');
+						}
+					});
+			}); 
+		</script>
+	</section>
+
+</body>
+<html>

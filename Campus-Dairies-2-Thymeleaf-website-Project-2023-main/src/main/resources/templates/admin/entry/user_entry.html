@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="admin/index"
+>
+  <head>
+    <title>User Entry</title>
+  </head>
+  <body>
+    <div layout:fragment="content1">
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6"></div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">User</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <!-- left column -->
+              <div class="col-md-12">
+                <!-- jquery validation -->
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3>User Entry</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form id="quickForm" method="post" th:action="@{/user/save}">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input
+                          type="text"
+                          name="name"
+                          class="form-control"
+                          id="name"
+                          placeholder="Enter Name "
+                          th:field="${user.name}"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input
+                          type="text"
+                          name="phone"
+                          class="form-control"
+                          id="phone"
+                          placeholder="Enter Phone "
+                          th:field="${user.phone}"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input
+                          type="text"
+                          name="email"
+                          class="form-control"
+                          id="email"
+                          placeholder="Enter Email "
+                          th:field="${user.email}"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input
+                          type="text"
+                          name="password"
+                          class="form-control"
+                          id="password"
+                          placeholder="Enter Password "
+                          th:field="${user.password}"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="role">Role</label>
+                        <select id="color" name="color" th:field="${user.role}">
+                          <option th:value="Admin">Admin</option>
+                          <option th:value="Student">Student</option>
+                          <option th:value="Staff">Staff</option>
+                          <option th:value="Tamp_Student">Guest Student</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="gender">Status</label>
+
+                        <div class="form-check">
+                          <input
+                            type="radio"
+                            th:value="1"
+                            th:field="${user.status}"
+                            id="status"
+                            name="status"
+                          />
+                          <label class="form-check-label" for="status"
+                            >Active</label
+                          >
+                        </div>
+                        <div class="form-check">
+                          <input
+                            type="radio"
+                            th:value="0"
+                            th:field="${user.status}"
+                            checked
+                            id="status"
+                            name="status"
+                          />
+                          <label class="form-check-label" for="status"
+                            >Inactive</label
+                          >
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="entryDate">Entry Date</label>
+                        <input
+                          type="date"
+                          name="entryDate"
+                          class="form-control"
+                          id="entryDate"
+                          placeholder="Enter Entry Date "
+                          th:field="${user.entryDate}"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="logoutDate">Logout Date</label>
+                        <input
+                          type="date"
+                          name="logoutDate"
+                          class="form-control"
+                          id="logoutDate"
+                          placeholder="Enter Logout Date "
+                          th:field="${user.logoutDate}"
+                        />
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary btn-sm">
+                        SUBMIT
+                      </button>
+                      <a th:href="@{/user/index}"
+                        ><button type="button" class="btn btn-dark btn-sm">
+                          BACK
+                        </button></a
+                      >
+                    </div>
+                  </form>
+                </div>
+                <!-- /.card -->
+              </div>
+              <!--/.col (left) -->
+              <!-- right column -->
+              <div class="col-md-6"></div>
+              <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+    </div>
+    <section layout:fragment="script1">
+      <script
+        th:src="@{/admin/plugins/jquery-validation/jquery.validate.min.js}"
+      ></script>
+      <script
+        th:src="@{/admin/plugins/jquery-validation/additional-methods.min.js}"
+      ></script>
+      <script>
+        $(function () {
+          $.validator.setDefaults({
+            submitHandler: function () {
+              document.getElementById("quickForm").submit();
+              //alert("Form successful submitted!");
+            },
+          });
+          $("#quickForm").validate({
+            rules: {
+              name: {
+                required: true,
+              },
+              phone: {
+                required: true,
+              },
+              email: {
+                required: true,
+              },
+              password: {
+                required: true,
+              },
+              role: {
+                required: true,
+              },
+              status: {
+                required: true,
+              },
+              entryDate: {
+                required: true,
+              },
+              logoutDate: {
+                required: true,
+              },
+            },
+            messages: {
+              name: {
+                required: "Please enter a name",
+              },
+              phone: {
+                required: "Please enter a phone",
+              },
+              email: {
+                required: "Please enter a email",
+              },
+              password: {
+                required: "Please enter a password",
+              },
+              role: {
+                required: "Please enter a role",
+              },
+              status: {
+                required: "Please enter a status",
+              },
+              entryDate: {
+                required: "Please enter a entry date",
+              },
+              logoutDate: {
+                required: "Please enter a logout date",
+              },
+            },
+            errorElement: "span",
+            errorPlacement: function (error, element) {
+              error.addClass("invalid-feedback");
+              element.closest(".form-group").append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+              $(element).addClass("is-invalid");
+            },
+            unhighlight: function (element, errorClass, validClass) {
+              $(element).removeClass("is-invalid");
+            },
+          });
+        });
+      </script>
+    </section>
+  </body>
+  <html></html>
+</html>

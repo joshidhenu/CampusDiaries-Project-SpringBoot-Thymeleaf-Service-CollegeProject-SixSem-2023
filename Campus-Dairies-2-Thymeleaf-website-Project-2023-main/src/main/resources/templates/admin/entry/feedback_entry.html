@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="admin/index"
+>
+  <head>
+    <title>Feedback Entry</title>
+  </head>
+
+  <body>
+    <div layout:fragment="content1">
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6"></div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Feedback</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <!-- left column -->
+              <div class="col-md-12">
+                <!-- jquery validation -->
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3>Feedback Entry</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form
+                    id="quickForm"
+                    method="post"
+                    th:action="@{/feedback/save}"
+                  >
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input
+                          type="text"
+                          name="name"
+                          class="form-control"
+                          id="name"
+                          placeholder="Enter Name "
+                          th:field="${feedback.name}"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input
+                          type="text"
+                          name="email"
+                          class="form-control"
+                          id="email"
+                          placeholder="Enter Email "
+                          th:field="${feedback.email}"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input
+                          type="text"
+                          name="subject"
+                          class="form-control"
+                          id="subject"
+                          placeholder="Enter Subject "
+                          th:field="${feedback.subject}"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="message">Message</label>
+                        <input
+                          type="text"
+                          name="message"
+                          class="form-control"
+                          id="message"
+                          placeholder="Enter Message "
+                          th:field="${feedback.message}"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <input type="hidden" value="1" name="status" />
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary btn-sm">
+                        SUBMIT
+                      </button>
+                      <a th:href="@{/feedback/index}"
+                        ><button type="button" class="btn btn-dark btn-sm">
+                          BACK
+                        </button></a
+                      >
+                    </div>
+                  </form>
+                </div>
+                <!-- /.card -->
+              </div>
+              <!--/.col (left) -->
+              <!-- right column -->
+              <div class="col-md-6"></div>
+              <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+    </div>
+    <section layout:fragment="script1">
+      <script
+        th:src="@{/admin/plugins/jquery-validation/jquery.validate.min.js}"
+      ></script>
+      <script
+        th:src="@{/admin/plugins/jquery-validation/additional-methods.min.js}"
+      ></script>
+      <script>
+        $(function () {
+          $.validator.setDefaults({
+            submitHandler: function () {
+              document.getElementById("quickForm").submit();
+              //alert("Form successful submitted!");
+            },
+          });
+          $("#quickForm").validate({
+            rules: {
+              name: {
+                required: true,
+              },
+              email: {
+                required: true,
+              },
+              subject: {
+                required: true,
+              },
+              message: {
+                required: true,
+              },
+              status: {
+                required: true,
+              },
+            },
+            messages: {
+              name: {
+                required: "Please enter a name",
+              },
+              email: {
+                required: "Please enter a email",
+              },
+              subject: {
+                required: "Please enter a subject",
+              },
+              message: {
+                required: "Please enter a message",
+              },
+              status: {
+                required: "Please enter a status",
+              },
+            },
+            errorElement: "span",
+            errorPlacement: function (error, element) {
+              error.addClass("invalid-feedback");
+              element.closest(".form-group").append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+              $(element).addClass("is-invalid");
+            },
+            unhighlight: function (element, errorClass, validClass) {
+              $(element).removeClass("is-invalid");
+            },
+          });
+        });
+      </script>
+    </section>
+  </body>
+  <html></html>
+</html>

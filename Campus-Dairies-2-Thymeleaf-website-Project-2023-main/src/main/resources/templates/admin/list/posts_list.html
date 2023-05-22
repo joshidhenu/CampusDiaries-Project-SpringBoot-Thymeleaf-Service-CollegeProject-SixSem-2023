@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="admin/index">
+<head>
+<title>Post List</title>
+</head>
+<body>
+
+	<div layout:fragment="content1">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+
+							<h1>Post</h1>
+						</div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">Post</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+
+
+							<div class="card">
+								<div class="card-header">
+									<a th:href="@{/post/create}" class="btn btn-primary btn-sm">ADD
+										NEW POST</a>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<table id="example1" class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>Id</th>
+												<th>User</th>
+												<th>Photo</th>
+												<th>Message</th>
+												<th>Like Count</th>
+												<th>Dislike Count</th>
+												<th>Entry Date</th>
+												<th>Status</th>
+												<th style="width: 150px">Actions</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="post : ${listPosts}">
+												<td th:text="${post.id}"></td>
+												<td th:text="${post.user.name}"></td>
+												<td><img th:src="@{${post.imagePath}}"
+													style="width: 60px" /></td>
+												<td th:text="${post.message}"></td>
+												<td th:text="${post.likeCount}"></td>
+												<td th:text="${post.dislikeCount}"></td>
+												<td th:text="${post.entryDate}"></td>
+												<td th:text="${post.status} ?'Active':'Inactive'"></td>
+												<td>
+												<th:block th:if="${session.urole == 'admin' || session.urole == 'staff'}">
+												<a th:href="@{/post/update/{id}(id=${post.id})}"
+													class="btn btn-success btn-sm">UPDATE</a> 
+													</th:block>
+													<a
+													th:href="@{/post/delete/{id}(id=${post.id})}"
+													onclick="return confirm('Do you want to DELETE?')"
+													class="btn btn-danger btn-sm">DELETE</a></td>
+											</tr>
+										</tbody>
+										<tfoot>
+											<tr>
+												<th>Id</th>
+												<th>User</th>
+												<th>Photo</th>
+												<th>Message</th>
+												<th>Like Count</th>
+												<th>Dislike Count</th>
+												<th>Entry Date</th>
+												<th>Status</th>
+												<th>Actions</th>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</body>

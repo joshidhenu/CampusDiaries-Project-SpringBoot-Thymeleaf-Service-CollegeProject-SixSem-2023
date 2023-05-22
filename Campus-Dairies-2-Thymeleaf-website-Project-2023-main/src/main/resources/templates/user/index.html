@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="user/template">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="icon" href="assets/images/favicon.png" sizes="35x35"
+	type="image/png" />
+<title>Campus Diaries</title>
+</head>
+
+<body>
+	<div layout:fragment="content1">
+		<section>
+			<div class="w-100 position-relative">
+				<div
+					class="feat-wrap pt-140 pb-140 dark-layer position-relative opc7 w-100"
+					style="padding-bottom: 2.75rem; padding-top: 3.75rem">
+					<div class="fixed-bg"
+						style="background-image: url(/assets/images/resources/feat-bg1.jpg);"></div>
+					<div class="container">
+						<div class="feat-inner pt-240 w-100">
+							<h2 class="mb-0 text-center">
+								Explore on-going and <br /> Upcoming Events Around you...
+							</h2>
+							<form class="dir-form d-flex"
+								style="max-width: 75%; margin: auto">
+								<div class="field">
+									<label class="thm-clr">Event Name</label> <input type="text" />
+									<i class="fas fa-search"></i>
+								</div>
+								<!-- <div class="field loc">
+                                            <label class="thm-clr">Location</label>
+                                            <input type="text" placeholder="15th Feb 2016">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div> -->
+								<div class="field slc">
+									<div class="slc-wp">
+										<select>
+											<option>All Categories</option>
+											<option>Category Style 1</option>
+											<option>Category Style 2</option>
+											<option>Category Style 3</option>
+										</select>
+									</div>
+								</div>
+								<button class="thm-btn" type="submit">
+									<i class="fas fa-search"></i>DISCOVER NOW
+								</button>
+							</form>
+							<div class="dir-cate-wrap text-center w-100">
+								<h4 class="mb-0">Use quick search by category</h4>
+								<ul class="dir-opt-list d-inline-flex mb-0 list-unstyled">
+									<li><a href="listing-layout.html" title=""><span
+											class="rounded-circle"><i
+												class="fas fa-glass-cheers"
+												style="font-size: 48px; color: rgba(207, 67, 40, 1)"></i></span>
+											<h5 class="mb-0">Parties</h5> </a></li>
+									<li><a href="listing-layout.html" title=""><span
+											class="rounded-circle"><i
+												class="fas fa-table-tennis"
+												style="font-size: 48px; color: rgba(207, 67, 40, 1)"></i></span>
+											<h5 class="mb-0">Sports</h5> </a></li>
+									<li><a href="listing-layout.html" title=""><span
+											class="rounded-circle"><i
+												class="fas fa-user-graduate"
+												style="font-size: 48px; color: rgba(207, 67, 40, 1)"></i></span>
+											<h5 class="mb-0">Connvocation</h5> </a></li>
+									<li><a href="listing-layout.html" title=""><span
+											class="rounded-circle"><i
+												class="fas fa-laptop-code"
+												style="font-size: 48px; color: rgba(207, 67, 40, 1)"></i></span>
+											<h5 class="mb-0">Seminar/Webinar</h5> </a></li>
+									<li><a href="listing-layout.html" title=""><span
+											class="rounded-circle"><i
+												class="fas fa-school"
+												style="font-size: 48px; color: rgba(207, 67, 40, 1)"></i></span>
+											<h5 class="mb-0">Youth Festival</h5> </a></li>
+								</ul>
+								          
+							</div>
+						</div>
+						<!-- Feat Wrap -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="w-100 pb-140 gray-bg position-relative">
+				<div class="container">
+					<!-- City Search Wrap -->
+					<div class="place-listing-wrap mt-70 w-100">
+						<div class="row">
+							<h2 class="w-100 my-5 text-center">Event Posts</h2>
+
+							<div class="col-md-6 col-sm-6 col-lg-4"
+								th:each="post:${listPost}">
+								<div class="place-list-info w-100" style="padding-left: 3%">
+									<div
+										class="list-post-author-stats d-flex flex-wrap justify-content-between align-items-center">
+										<img class="rounded-circle img-fluid"
+											th:src="@{${post.imagePath}}"
+											style="height: 48px; width: 48px" alt="Author Image 1" />
+
+										<h6 style="margin-right: 102px" th:text="${post.user.name}"></h6>
+									</div>
+								</div>
+								<div class="place-list-box w-100">
+									<div
+										class="place-list-img overflow-hidden position-relative w-100">
+										<img class="img-fluid w-100"
+											style="width: 300px; height: 200px"
+											th:src="@{${post.imagePath}}" alt="Place List Image 1" />
+										<div class="place-map position-absolute w-100" id="place-map1"></div>
+									</div>
+									<!--<div class="place-list-info w-100">-->
+
+									<!--</div>-->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Place Listing Wrap -->
+					<div class="view-all mt-25 mb-10 text-center w-100">
+						<a class="thm-btn brd-btn" th:href="@{/post}" title="">Show
+							More</a>
+					</div>
+					<!-- View All -->
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="w-100 pt-70 position-relative">
+				<div class="container">
+					<div class="sec-title text-center w-100">
+						<span class="d-block thm-clr">We arrange
+							many other events & party for enjoy</span>
+						<h3 class="mb-0">Upcoming Events</h3>
+					</div>
+					<!-- Sec Title -->
+					<div class="upcoming-wrap w-100">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-lg-6"
+								th:each="event:${listEvent}">
+								<div class="upcoming-event-box w-100">
+									<div
+										class="upcoming-event-img overflow-hidden position-relative w-100">
+										<a href="event-detail2.html" title=""><img
+											class="img-fluid w-100" th:src="@{${event.imagePath}}"
+											alt="Upcoming Event Image 1" /></a>
+									</div>
+									<div class="upcoming-event-info w-100">
+										<span
+											class="upcoming-post-date position-absolute thm-bg rounded-pill"
+											th:text="${event.startDate}">May
+											28, 2018</span>
+										<ul class="post-meta2 d-inline-flex mb-0 list-unstyled">
+											<li><i class="thm-clr far fa-clock"></i>10 Am - 01 Pm</li>
+											<li><i class="thm-clr fas fa-users"></i>50</li>
+										</ul>
+										<h3 class="mb-0">
+											<a href="event-detail2.html" title=""
+												th:text="${event.title}">MWC
+												Barcelona 2021</a>
+										</h3>
+										<p class="mb-0" th:text="${event.detail}">We provide event
+											and directory listings of restaurants, museums, art centers,
+											theaters, and landmarks.</p>
+										<span class="d-block loc-pos"><i
+											class="thm-clr fas fa-map-marker-alt rounded-circle"></i>Ganpath
+											University, Gujarat</span>
+									</div>
+									<div class="upcoming-event-counter w-100">
+										<ul
+											class="countdown d-inline-flex flex-wrap mb-0 list-unstyled w-100">
+											<li><span class="days">103</span>
+												<p class="days_ref theme-clr">days</p></li>
+											<li><span class="hours">00</span>
+												<p class="hours_ref theme-clr">hours</p></li>
+											<li><span class="minutes">23</span>
+												<p class="minutes_ref theme-clr">min</p></li>
+											<li><span class="seconds">48</span>
+												<p class="seconds_ref theme-clr">sec</p></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Upcoming Wrap -->
+					<div class="view-all mt-25 mb-10 text-center w-100">
+						<a class="thm-btn brd-btn" th:href="@{/event}" title="">Show
+							More</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<div class="w-100 pt-140 pb-130 gray-bg position-relative">
+				<div class="container">
+					<div class="gallery-wrap w-100">
+						<div class="row mrg10">
+							<h2 class="w-100 my-5 text-center">Event Gallery</h2>
+
+							<div class="col-md-6 col-sm-6 col-lg-4"
+								th:each="photosGallery:${listPhotosGallery2}">
+								<div
+									class="gallery-box brd-rd20 overflow-hidden position-relative w-100">
+									<img class="img-fluid w-100"
+										th:src="@{${photosGallery.imagePath}}" alt="Gallery Image 1" />
+									<div class="gallery-info position-absolute w-100">
+										<a class="rounded-circle thm-bg"
+											th:href="@{${photosGallery.imagePath}}"
+											data-fancybox="gallery"><i
+											class="fas fa-plus"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Gallery Wrap -->
+					<div class="view-all mt-35 text-center w-100">
+						<a class="thm-btn brd-btn" th:href="@{/gallery}" title="">Show
+							More</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="w-100 pt-140 pb-110 position-relative">
+				<div class="fixed-bg bg-norepeate"
+					style="background-image: url(assets/images/how-we-work-bg.png)"></div>
+				<div class="container">
+					<div class="sec-title text-center w-100">
+						<span class="d-block thm-clr">#StudentsFirst #CharacterMust</span>
+						<span class=""><img class="img-fluid"
+							th:src="@{/assets/images/gnu1.png}" alt="How It Works Icon 1"
+							style="max-width: 30%; height: auto" /></span>
+					</div>
+					<!-- Sec Title -->
+					<div class="how-work-wrap res-row text-center w-100">
+						<div class="row">
+							<div class="col-md-6 col-sm-6 col-lg-4">
+								<div class="how-work-box w-100">
+									<span class="rounded-circle d-inline-block"><img
+										class="img-fluid"
+										th:src="@{/assets/images/resources/how-work-icon1.png}"
+										alt="How It Works Icon 1" /></span>
+									<div class="how-work-inner w-100">
+										<h3 class="mb-0">Awards and Rating</h3>
+										<p class="mb-0">Ganpat university has been awarded by the
+											best university of the year, in the year 2018,2019,2020,2021.
+											As well as holds the four star rating. Furthermore Ganpat
+											University has secured a place under the Excellent University
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 col-lg-4">
+								<div class="how-work-box w-100">
+									<span class="rounded-circle d-inline-block">
+										<img class="img-fluid"
+										th:src="@{/assets/images/resources/how-work-icon2.png}"
+										alt="How It Works Icon 2" />
+									</span>
+									<div class="how-work-inner w-100">
+										<h3 class="mb-0">Heterogeneous & Specialised Programs</h3>
+										<p class="mb-0">Only University in State offering
+											heterogeneous and spicialised programs</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 col-lg-4">
+								<div class="how-work-box w-100">
+									<span class="rounded-circle d-inline-block"><img
+										class="img-fluid"
+										th:src="@{/assets/images/resources/how-work-icon3.png}"
+										alt="How It Works Icon 3" /></span>
+									<div class="how-work-inner w-100">
+										<h3 class="mb-0">International Alliances</h3>
+										<p class="mb-0">Ganpat University have a friendly
+											collaborartion with International Universities</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Services Wrap -->
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

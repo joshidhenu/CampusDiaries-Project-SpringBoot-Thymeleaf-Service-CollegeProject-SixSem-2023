@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="admin/index">
+
+<head>
+	<title>Notification List</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content1">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1>Notification</h1>
+						</div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">Notification</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+
+
+							<div class="card">
+								<div class="card-header">
+									<a th:href="@{/notification/create}" class="btn btn-primary btn-sm">ADD NEW
+										NOTIFICATION</a>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<table id="example1" class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>Id</th>
+												<th>User</th>
+												<th>User</th>
+												<th>Title</th>
+												<th>Is Read</th>
+												<th>Message</th>
+												<th>Entry Date</th>
+												<th style="width: 150px">Actions</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="notification : ${listNotifications}">
+												<td th:text="${notification.id}"></td>
+												<td th:text="${notification.ruser.name}"></td>
+												<td th:text="${notification.suser.name}"></td>
+												<td th:text="${notification.title}"></td>
+												<td th:text="${notification.isRead}"></td>
+												<td th:text="${notification.message}"></td>
+												<td th:text="${notification.entryDate}"></td>
+												<td><a th:href="@{/notification/update/{id}(id=${notification.id})}"
+														class="btn btn-success btn-sm">UPDATE</a> <a
+														th:href="@{/notification/delete/{id}(id=${notification.id})}"
+														onclick="return confirm('Do you want to DELETE?')"
+														class="btn btn-danger btn-sm">DELETE</a></td>
+											</tr>
+										</tbody>
+										<tfoot>
+											<tr>
+												<th>Id</th>
+												<th>User</th>
+												<th>User</th>
+												<th>Title</th>
+												<th>Is Read</th>
+												<th>Message</th>
+												<th>Entry Date</th>
+												<th>Actions</th>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</body>
+<html>

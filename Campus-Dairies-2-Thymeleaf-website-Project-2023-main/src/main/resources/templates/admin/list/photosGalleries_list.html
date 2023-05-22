@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="admin/index">
+
+<head>
+	<title>PhotosGallery List</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content1">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+
+							<h1>PhotosGallery</h1>
+						</div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">PhotosGallery</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+
+
+							<div class="card">
+								<div class="card-header">
+									<a th:href="@{/photosGallery/create}" class="btn btn-primary btn-sm">ADD NEW
+										PHOTOSGALLERY</a>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<table id="example1" class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>Id</th>
+												<th>Event</th>
+												<th>Photo</th>
+												
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="photosGallery : ${listPhotosGalleries}">
+												<td th:text="${photosGallery.id}"></td>
+												<td th:text="${photosGallery.event.title}"></td>
+												<td><img th:src="@{${photosGallery.imagePath}}" style=" width: 60px" />
+												</td>
+												<td>
+												<th:block th:if="${session.urole == 'admin' || session.urole == 'staff'}">
+												<a th:href="@{/photosGallery/update/{id}(id=${photosGallery.id})}"
+														class="btn btn-success btn-sm">UPDATE</a> <a
+														th:href="@{/photosGallery/delete/{id}(id=${photosGallery.id})}"
+														onclick="return confirm('Do you want to DELETE?')"
+														class="btn btn-danger btn-sm">DELETE</a>
+														</th:block>
+														</td>
+														
+											</tr>
+										</tbody>
+
+									</table>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</body>
+<html>

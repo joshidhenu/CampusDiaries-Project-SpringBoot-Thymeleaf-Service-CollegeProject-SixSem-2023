@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>[[${session.urole}]] Panel</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      th:href="@{/admin/plugins/fontawesome-free/css/all.min.css}"
+    />
+    <!-- Ionicons -->
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link
+      rel="stylesheet"
+      th:href="@{/admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css}"
+    />
+    <!-- iCheck -->
+
+    <link
+      rel="stylesheet"
+      th:href="@{/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css}"
+    />
+    <!-- JQVMap -->
+    <link rel="stylesheet" th:href="@{/admin/plugins/jqvmap/jqvmap.min.css}" />
+    <link
+      rel="stylesheet"
+      th:href="@{/admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css}"
+    />
+
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/admin/dist/css/adminlte.min.css}" />
+    <!-- overlayScrollbars -->
+    <link
+      rel="stylesheet"
+      th:href="@{/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css}"
+    />
+    <!-- Daterange picker -->
+    <link
+      rel="stylesheet"
+      th:href="@{/admin/plugins/daterangepicker/daterangepicker.css}"
+    />
+    <!-- summernote -->
+    <link
+      rel="stylesheet"
+      th:href="@{/admin/plugins/summernote/summernote-bs4.min.css}"
+    />
+    <!--=================== list css===============-->
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      th:href="@{/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css}"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css}"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css}"
+    />
+
+    <!--==================== entry css =======================-->
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+  </head>
+
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+      <!-- Preloader -->
+      <div
+        class="preloader flex-column justify-content-center align-items-center"
+      >
+        <img
+          class="animation__shake"
+          th:src="@{/admin/dist/img/AdminLTELogo.png}"
+          alt="AdminLTELogo"
+          height="60"
+          width="60"
+        />
+      </div>
+
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"
+              ><i class="fas fa-bars"></i
+            ></a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a href="/" class="nav-link">View User Side</a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Welcome [[${session.urole}]] - [[${session.uname}]]</a>
+          </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Navbar Search -->
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              data-widget="navbar-search"
+              href="#"
+              role="button"
+            >
+              <i class="fas fa-search"></i>
+            </a>
+            <div class="navbar-search-block">
+              <form class="form-inline">
+                <div class="input-group input-group-sm">
+                  <input
+                    class="form-control form-control-navbar"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <div class="input-group-append">
+                    <button class="btn btn-navbar" type="submit">
+                      <i class="fas fa-search"></i>
+                    </button>
+                    <button
+                      class="btn btn-navbar"
+                      type="button"
+                      data-widget="navbar-search"
+                    >
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </li>
+
+          <!-- Messages Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="far fa-comments"></i>
+              <span class="badge badge-danger navbar-badge">3</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <a href="#" class="dropdown-item">
+                <!-- Message Start -->
+                <div class="media">
+                  <img
+                    th:src="@{/admin/dist/img/user1-128x128.jpg}"
+                    alt="User Avatar"
+                    class="img-size-50 mr-3 img-circle"
+                  />
+                  <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                      Brad Diesel
+                      <span class="float-right text-sm text-danger"
+                        ><i class="fas fa-star"></i
+                      ></span>
+                    </h3>
+                    <p class="text-sm">Call me whenever you can...</p>
+                    <p class="text-sm text-muted">
+                      <i class="far fa-clock mr-1"></i> 4 Hours Ago
+                    </p>
+                  </div>
+                </div>
+                <!-- Message End -->
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <!-- Message Start -->
+                <div class="media">
+                  <img
+                    th:src="@{/admin/dist/img/user8-128x128.jpg}"
+                    alt="User Avatar"
+                    class="img-size-50 img-circle mr-3"
+                  />
+                  <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                      John Pierce
+                      <span class="float-right text-sm text-muted"
+                        ><i class="fas fa-star"></i
+                      ></span>
+                    </h3>
+                    <p class="text-sm">I got your message bro</p>
+                    <p class="text-sm text-muted">
+                      <i class="far fa-clock mr-1"></i> 4 Hours Ago
+                    </p>
+                  </div>
+                </div>
+                <!-- Message End -->
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <!-- Message Start -->
+                <div class="media">
+                  <img
+                    th:src="@{/admin/dist/img/user3-128x128.jpg}"
+                    alt="User Avatar"
+                    class="img-size-50 img-circle mr-3"
+                  />
+                  <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                      Nora Silvester
+                      <span class="float-right text-sm text-warning"
+                        ><i class="fas fa-star"></i
+                      ></span>
+                    </h3>
+                    <p class="text-sm">The subject goes here</p>
+                    <p class="text-sm text-muted">
+                      <i class="far fa-clock mr-1"></i> 4 Hours Ago
+                    </p>
+                  </div>
+                </div>
+                <!-- Message End -->
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer"
+                >See All Messages</a
+              >
+            </div>
+          </li>
+          <!-- Notifications Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="far fa-bell"></i>
+              <span class="badge badge-warning navbar-badge">15</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-item dropdown-header"
+                >15 Notifications</span
+              >
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-envelope mr-2"></i> 4 new messages
+                <span class="float-right text-muted text-sm">3 mins</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-users mr-2"></i> 8 friend requests
+                <span class="float-right text-muted text-sm">12 hours</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-file mr-2"></i> 3 new reports
+                <span class="float-right text-muted text-sm">2 days</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer"
+                >See All Notifications</a
+              >
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+              <i class="fas fa-expand-arrows-alt"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              data-widget="control-sidebar"
+              data-controlsidebar-slide="true"
+              href="#"
+              role="button"
+            >
+              <i class="fas fa-th-large"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="index3.html" class="brand-link">
+          <img
+            th:src="@{/admin/dist/img/AdminLTELogo.png}"
+            alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3"
+            style="opacity: 0.8"
+          />
+          <span class="brand-text font-weight-light">Campus Diary</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img
+                th:src="@{/admin/dist/img/user2-160x160.jpg}"
+                class="img-circle elevation-2"
+                alt="User Image"
+              />
+            </div>
+            <div class="info">
+              </span> <a href="#" class="d-block" th:text="${session.uname}"></a>
+            </div>
+          </div>
+
+          <!-- SidebarSearch Form -->
+          <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+              <input
+                class="form-control form-control-sidebar"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-sidebar">
+                  <i class="fas fa-search fa-fw"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <th:block th:if="${session.urole == 'ADMIN'}">
+            <nav class="mt-2">
+              <!-- xxxxxxxxxxxxxxxxxxx -->
+              <ul
+                class="nav nav-pills nav-sidebar flex-column"
+                data-widget="treeview"
+                role="menu"
+                data-accordion="false"
+              >
+                <li class="">
+                  <a href="/" class="nav-link">
+                    <i class="far"></i>
+                    <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Home </b>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Event
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/event/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Forth Coming Events</p>
+                      </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="/event/pastEvents" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Past Events</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Event Registration
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/eventRegistration/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Forth Coming Event Registration</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/eventRegistration/pastEvent" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Past Event Registration</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p>
+                      User Management
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/user/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage User</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/staffMaster/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Staff Master</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/studentMaster/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Student Master</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/tempUser/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Temp User</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Photos Gallery
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/photosGallery/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Photos Gallery</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/photosGallery/create" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Add Photos in Gallery</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Post Management
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/post/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Post</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/commentPost/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Comment Post</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/replyComment/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Reply Comment</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Suggestion / Feedback
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/suggestion/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Suggestion</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/feedback/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Feedback</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="/logout" class="nav-link">
+                    <i class="fas fa-edit nav-icon"></i>
+                    <p>Logout</p>
+                  </a>
+                </li>
+              </ul>
+
+              <!-- xxxxxxxxxxxxxxxxxxx -->
+            </nav>
+          </th:block>
+
+          <th:block th:if="${session.urole == 'STAFF'}">
+            <nav class="mt-2">
+              <!-- xxxxxxxxxxxxxxxxxxx -->
+              <ul
+                class="nav nav-pills nav-sidebar flex-column"
+                data-widget="treeview"
+                role="menu"
+                data-accordion="false"
+              >
+                <li class="">
+                  <a href="/" class="nav-link">
+                    <i class="far"></i>
+                    <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Home </b>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Event
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/event/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Forth Coming Events</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/event/pastEvents" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Past Events</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Event Registration
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/eventRegistration/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Forth Coming Event Registration</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/eventRegistration/pastEvent" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Past Event Registration</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Photos Gallery
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/photosGallery/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Photos Gallery</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/photosGallery/create" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Add Photos in Gallery</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Post Management
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/post/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Post</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/commentPost/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Comment Post</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/replyComment/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Reply Comment</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Suggestion / Feedback
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/suggestion/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Suggestion</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/feedback/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Feedback</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="/logout" class="nav-link">
+                    <i class="fas fa-edit nav-icon"></i>
+                    <p>Logout</p>
+                  </a>
+                </li>
+              </ul>
+
+              <!-- xxxxxxxxxxxxxxxxxxx -->
+            </nav>
+          </th:block>
+
+          <th:block th:if="${session.urole == 'STUDENT'}">
+            <nav class="mt-2">
+              <!-- xxxxxxxxxxxxxxxxxxx -->
+              <ul
+                class="nav nav-pills nav-sidebar flex-column"
+                data-widget="treeview"
+                role="menu"
+                data-accordion="false"
+              >
+                <li class="">
+                  <a href="/" class="nav-link">
+                    <i class="far"></i>
+                    <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Home </b>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Event
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/event/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Forth Coming Events</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/event/pastEvents" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Past Events</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Event Registration
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/eventRegistration/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Forth Coming Event Registration</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Photos Gallery
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/photosGallery/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>View Photos Gallery</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/photosGallery/create" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Add Photos in Gallery</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Post Management
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/post/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>View Post</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/commentPost/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Comment Post</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/replyComment/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Reply Comment</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Suggestion / Feedback
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/suggestion/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Give Suggestion</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/feedback/index" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Give Feedback</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="/logout" class="nav-link">
+                    <i class="fas fa-edit nav-icon"></i>
+                    <p>Logout</p>
+                  </a>
+                </li>
+              </ul>
+
+              <!-- xxxxxxxxxxxxxxxxxxx -->
+            </nav>
+          </th:block>
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- session for message -->
+
+      <!-- end session for message -->
+
+      <!-- section -->
+      <section layout:fragment="content1"></section>
+
+      <footer class="main-footer">
+        <p class="mb-0">
+          &copy; 2023 <a href="index.html" title="">Campus Diaries</a> —
+           Developed by
+          <a
+            href="https://themeforest.net/user/jthemes/portfolio"
+            title="Jthemes"
+            target="_blank"
+            >Arth & Dhenu</a
+          >
+        </p>
+      </footer>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script th:src="@{/admin/plugins/jquery-ui/jquery-ui.min.js}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge("uibutton", $.ui.button);
+    </script>
+    <!-- Bootstrap 4 -->
+    <script
+      th:src="@{/admin/plugins/bootstrap/js/bootstrap.bundle.min.js}"
+    ></script>
+    <!-- ChartJS -->
+    <script th:src="@{/admin/plugins/chart.js/Chart.min.js}"></script>
+    <!--  <!-- Sparkline -->
+    <script th:src="@{/admin/plugins/sparklines/sparkline.js}"></script>
+    -->
+    <!--  <!-- JQVMap -->
+    <script th:src="@{/admin/plugins/jqvmap/jquery.vmap.min.js}"></script>
+    -->
+    <!-- <script th:src="@{/admin/plugins/jqvmap/maps/jquery.vmap.usa.js}"></script> -->
+    <!-- jQuery Knob Chart -->
+    <script th:src="@{/admin/plugins/jquery-knob/jquery.knob.min.js}"></script>
+    <!-- daterangepicker -->
+    <script th:src="@{/admin/plugins/moment/moment.min.js}"></script>
+    <script
+      th:src="@{/admin/plugins/daterangepicker/daterangepicker.js}"
+    ></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script
+      th:src="@{/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js}"
+    ></script>
+    <!-- Summernote -->
+    <script
+      th:src="@{/admin/plugins/summernote/summernote-bs4.min.js}"
+    ></script>
+    <!-- overlayScrollbars -->
+    <script
+      th:src="@{/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"
+    ></script>
+    <script th:src="@{/admin/plugins/sweetalert2/sweetalert2.min.js}"></script>
+    <!-- AdminLTE App -->
+    <script th:src="@{/admin/dist/js/adminlte.js}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script th:src="@{/admin/dist/js/demo.js}"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script th:src="@{/admin/dist/js/pages/dashboard.js}"></script>
+    <!-- SweetAlert2 Notification -->
+
+    <!-- ===================list js===================== -->
+
+    <!-- DataTables  & Plugins -->
+    <script
+      th:src="@{/admin/plugins/datatables/jquery.dataTables.min.js}"
+    ></script>
+    <script
+      th:src="@{/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"
+    ></script>
+    <script
+      th:src="@{/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js}"
+    ></script>
+    <script
+      th:src="@{/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"
+    ></script>
+    <script
+      th:src="@{/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js}"
+    ></script>
+    <script
+      th:src="@{/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"
+    ></script>
+    <script th:src="@{/admin/plugins/jszip/jszip.min.js}"></script>
+    <script th:src="@{/admin/plugins/pdfmake/pdfmake.min.js}"></script>
+    <script th:src="@{/admin/plugins/pdfmake/vfs_fonts.js}"></script>
+    <script
+      th:src="@{/admin/plugins/datatables-buttons/js/buttons.html5.min.js}"
+    ></script>
+    <script
+      th:src="@{/admin/plugins/datatables-buttons/js/buttons.print.min.js}"
+    ></script>
+    <script
+      th:src="@{/admin/plugins/datatables-buttons/js/buttons.colVis.min.js}"
+    ></script>
+
+    <script>
+      $(function () {
+        var Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+
+        setTimeout(function () {
+          const div = document.querySelector("#kk");
+          if (div.classList.contains("inserted")) {
+            inserted_msg();
+          }
+          if (div.classList.contains("updated")) {
+            updated_msg();
+          }
+          if (div.classList.contains("deleted")) {
+            deleted_msg();
+          }
+        }, 2000);
+
+        function inserted_msg() {
+          Toast.fire({
+            icon: "success",
+            title: "Record inserted successfully !!",
+          });
+        }
+        function updated_msg() {
+          Toast.fire({
+            icon: "info",
+            title: "Record updated successfully !!",
+          });
+        }
+        function deleted_msg() {
+          Toast.fire({
+            icon: "error",
+            title: "Record deleted successfully !!",
+          });
+        }
+      });
+    </script>
+
+    <section layout:fragment="script1">
+      <script>
+        $(function () {
+          $("#example1")
+            .DataTable({
+              responsive: true,
+              lengthChange: false,
+              autoWidth: false,
+              buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            })
+            .buttons()
+            .container()
+            .appendTo("#example1_wrapper .col-md-6:eq(0)");
+        });
+      </script>
+    </section>
+
+    <th:block th:if="${session.msg}">
+      <script>
+        alert("[[${session.msg}]]");
+      </script>
+      <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+    </th:block>
+  </body>
+</html>

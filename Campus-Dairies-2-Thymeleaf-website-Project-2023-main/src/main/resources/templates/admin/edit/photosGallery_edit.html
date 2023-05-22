@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="admin/index">
+<head>
+<title>PhotosGallery Edit</title>
+</head>
+<body>
+
+	<div layout:fragment="content1">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6"></div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">PhotosGallery</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<!-- left column -->
+						<div class="col-md-12">
+							<!-- jquery validation -->
+							<div class="card card-primary">
+								<div class="card-header">
+									<h3>PhotosGallery Update</h3>
+								</div>
+								<!-- /.card-header -->
+								<!-- form start -->
+								<form id="quickForm" method="post"
+									th:action="@{/admin/photosGallery/save}" enctype="multipart/form-data" th:object="${photosGallery}">
+									<div class="card-body">
+										<div class="form-group">
+											<label for="id">Id</label> <input type="text" name="id"
+												class="form-control" id="id" placeholder="Enter Id "
+												th:value="${photosGallery.getId()}" readonly="readonly">
+										</div>
+										<div class="form-group">
+											<label for="event">Event</label> <select
+												th:field="${photosGallery.event}" name="event"
+												class="form-control col-md-3">
+												<option th:each="event:${listEvents}"
+													th:text="${event.getTitle()}" th:value="${event.getId()}"></option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="photo">Photo</label> <input type="file"
+												accept="image/png image/jpeg" name="file"
+												class="form-control" id="file" placeholder="Enter Photo">
+											<input type="hidden" th:value="${photosGallery.getPhoto()}"> <img
+												th:src="@{${photosGallery.imagePath}}"
+												style="height: 16%; width: 16%;" />
+										</div>
+
+
+									</div>
+									<!-- /.card-body -->
+									<div class="card-footer">
+										<button type="submit" class="btn btn-primary btn-sm">UPDATE</button>
+										<a th:href="@{/admin/photosGallery/index}"><button type="button"
+												class="btn btn-dark btn-sm">BACK</button></a>
+									</div>
+								</form>
+							</div>
+							<!-- /.card -->
+						</div>
+						<!--/.col (left) -->
+						<!-- right column -->
+						<div class="col-md-6"></div>
+						<!--/.col (right) -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+	<section layout:fragment="script1"></section>
+
+</body>
+<html>

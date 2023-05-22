@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="user/template">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="icon" href="assets/images/favicon.png" sizes="35x35" type="image/png">
+    <title>Event</title>
+
+</head>
+
+<body>
+    <div layout:fragment="content1">
+
+
+        <section>
+            <div class="w-100 pt-180 pb-110 black-layer opc45 position-relative">
+                <div class="fixed-bg" style="background-image: url(assets/images/pg-tp-bg.jpg);"></div>
+                <div class="container">
+                    <div class="pg-tp-wrp text-center w-100">
+                        <h1 class="mb-0">Events Registration</h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html" title="Home">Home</a></li>
+                            <li class="breadcrumb-item active">Events Registration</li>
+                        </ol>
+                    </div><!-- Page Top Wrap -->
+                </div>
+            </div>
+        </section>
+        <section>
+            <div style="margin: auto;">
+                <div class="w-100 gray-bg position-relative ">
+                    <div class="login-register-wrap w-100">
+                        <div class="row mrg align-items-center">
+
+                            <div class="col-md-12 col-sm-12 col-lg-12">
+                                <div class="register-wrap w-100 ">
+                                    <div class="register-inner">
+                                        <div class="title2 w-100">
+                                            <h1 th:text="${eventRegistration.event.title}"></h1>
+                                            <h2 class="mb-0">Are you willing to register for an event? Register Now</h2>
+                                            <p class="mb-0">By registering yourself from here you will be eligable to be
+                                                a participant for an event . Hope you enjoy an event </p>
+                                        </div>
+                                        <form class="w-100" method="post" th:action="@{/event-registration}">
+                                            <div class="row mrg20">
+                                                <div class="form-group">
+                                                    <label for="user">User</label>
+                                                    <input type="text" readonly th:field="${eventRegistration.user.name}">
+                                                    <input type="hidden" th:field="${eventRegistration.user.id}">
+                                                    
+                                                </div>
+                                                <input type="hidden" th:field="${eventRegistration.event.id}">
+                                                <div class="form-group">
+                                                    <label for="payment">Payment Type</label>
+                                                    <input type="text" name="paymentType"
+                                                        value="CASH" class="form-control" id="paymentType"
+                                                        placeholder="Enter Payment Type ">
+                                                </div>
+
+                                                <!-- <div class="form-group">
+                                                    <label for="payment">Payment Details</label> <input type="text"
+                                                        name="paymentDetail" class="form-control"
+                                                        th:field="${eventRegistration.paymentDetail}" id="paymentDetail"
+                                                        placeholder="Enter Payment Detail ">
+                                                </div> -->
+
+                                                <div class="col-md-12 col-sm-12 col-lg-12">
+                                                    <button class="thm-btn rounded-pill" type="submit">Register
+                                                        Now</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Login Register Wrap -->
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

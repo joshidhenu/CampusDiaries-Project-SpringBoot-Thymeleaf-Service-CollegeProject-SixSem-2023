@@ -1,0 +1,102 @@
+<!DOCTYPE html> 
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="admin/index"> 
+<head> 
+    <title>User List</title> 
+</head> 
+<body> 
+
+ <div layout:fragment="content1"> 
+ <div class="content-wrapper"> 
+      <!-- Content Header (Page header) --> 
+      <section class="content-header"> 
+        <div class="container-fluid"> 
+          <div class="row mb-2"> 
+            <div class="col-sm-6"> 
+           
+ <h1>Login User</h1> 
+          </div> 
+          <div class="col-sm-6"> 
+            <ol class="breadcrumb float-sm-right"> 
+              <li class="breadcrumb-item"><a href="#">Home</a></li> 
+              <li class="breadcrumb-item active">User</li> 
+            </ol> 
+            </div> 
+          </div> 
+        </div><!-- /.container-fluid --> 
+      </section> 
+ 
+      <!-- Main content --> 
+      <section class="content"> 
+        <div class="container-fluid"> 
+          <div class="row"> 
+            <div class="col-12"> 
+  
+ 
+              <div class="card"> 
+                <div class="card-header">
+<a th:href="@{/user/create}" class="btn btn-primary btn-sm">ADD NEW USER</a>  
+                </div> 
+                <!-- /.card-header --> 
+                <div class="card-body"> 
+                  <table id="example1" class="table table-bordered table-striped"> 
+                    <thead> 
+                      <tr>
+<th>Id</th>
+<th>Name</th>
+<th>Phone</th>
+<th>Email</th>
+
+<th>Role</th>
+<th>Status</th>
+<th>Entry Date</th>
+<th>Logout Date</th>
+<th style = "width:150px"> Actions </th> 
+                      </tr> 
+                    </thead> 
+                    <tbody> 
+                      <tr th:each="user : ${listUsers}">
+<td th:text= "${user.id}"> </td>
+<td th:text= "${user.name}"> </td>
+<td th:text= "${user.phone}"> </td>
+<td th:text= "${user.email}"> </td>
+
+<td th:text= "${user.role}"> </td>
+<td th:text= "${user.status} ?'Active':'Inactive'"> </td>
+<td th:text= "${user.entryDate}"> </td>
+<td th:text= "${user.logoutDate}"> </td>
+<td> <a th:href="@{/user/update/{id}(id=${user.id})}" class="btn btn-success btn-sm">UPDATE</a> 
+						<a th:href="@{/user/delete/{id}(id=${user.id})}" onclick="return confirm('Do you want to DELETE?')" class="btn btn-danger btn-sm">DELETE</a> 
+					</td>  
+                      </tr> 
+                    </tbody> 
+                    <tfoot> 
+                      <tr>
+<th>Id</th>
+<th>Name</th>
+<th>Phone</th>
+<th>Email</th>
+
+<th>Role</th>
+<th>Status</th>
+<th>Entry Date</th>
+<th>Logout Date</th>
+<th> Actions </th> 
+                      </tr> 
+                    </tfoot> 
+                  </table> 
+                </div> 
+                <!-- /.card-body --> 
+              </div> 
+              <!-- /.card --> 
+            </div> 
+            <!-- /.col --> 
+          </div> 
+          <!-- /.row --> 
+        </div> 
+        <!-- /.container-fluid --> 
+      </section> 
+      <!-- /.content --> 
+    </div> 
+    </div>
+ </body>
+ <html>

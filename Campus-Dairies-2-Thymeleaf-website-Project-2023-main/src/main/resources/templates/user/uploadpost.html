@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="user/template">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="icon" th:href="@{assets/images/favicon.png}" sizes="35x35" type="image/png">
+    <title></title>
+    <link th:href="@{assets/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+</head>
+
+<body>
+    <div layout:fragment="content1">
+        <section>
+            <div class="w-100 pt-180 pb-110 black-layer opc45 position-relative">
+                <div class="fixed-bg" style="background-image: url(assets/images/pg-tp-bg.jpg);"></div>
+                <div class="container">
+                    <div class="pg-tp-wrp text-center w-100">
+                        <h1 class="mb-0">Upload Post</h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html" title="Home">Home</a></li>
+                            <li class="breadcrumb-item active">Upload Post</li>
+                        </ol>
+                    </div><!-- Page Top Wrap -->
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="w-100 gray-bg position-relative">
+                <div class="login-register-wrap w-100">
+                    <div class="col-md-12 col-sm-12 col-lg-7">
+                        <div class="register-wrap w-100" style="margin-left: 41%;">
+                            <div class="register-inner">
+                                <div class="title2 w-100">
+                                    <h2 class="mb-0">Upload the post</h2>
+                                </div>
+                                <form class="w-100" method="post" enctype="multipart/form-data">
+                                    <div class="row mrg20">
+
+                                        <div class="col-lg-12">
+                                            <input class="rounded-pill" type="text" placeholder="Message" name="message"
+                                                th:field="${post.message}">
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <img th:src="@{assets/images/images.jpeg}" alt="Profile"
+                                                style="height: 90%;width: 100%;">
+                                            <div class="pt-2">
+                                                <label class="btn btn-primary btn-sm"
+                                                    title="Upload new profile image"><i class="bi bi-upload"><input
+                                                            type="file" name="file" id="file" hidden></i></label>
+                                                <label class="btn btn-danger btn-sm" title="Remove my profile image"><i
+                                                        class="bi bi-trash"></i></label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-12">
+                                            <button class="thm-btn rounded-pill" type="submit">Upload</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- Login Register Wrap -->
+
+        </section>
+    </div>
+</body>
+
+<!-- Mirrored from jthemes.net/themes/html/neondir/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Mar 2023 05:51:10 GMT -->
+
+</html>

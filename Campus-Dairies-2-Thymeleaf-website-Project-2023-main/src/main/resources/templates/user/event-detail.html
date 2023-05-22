@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="user/template">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="icon" href="assets/images/favicon.png" sizes="35x35" type="image/png">
+    <title>Campus Diaries</title>
+
+</head>
+
+<body>
+    <div layout:fragment="content1">
+        <section>
+            <div class="w-100 pt-180 pb-110 black-layer opc45 position-relative">
+                <div class="fixed-bg" style="background-image: url(assets/images/pg-tp-bg.jpg);"></div>
+                <div class="container">
+                    <div class="pg-tp-wrp text-center w-100">
+                        <h1 class="mb-0">Event Detail</h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html" title="Home">Home</a></li>
+                            <li class="breadcrumb-item active">Event Detail</li>
+                        </ol>
+                    </div><!-- Page Top Wrap -->
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="w-100 pt-80 pb-80 gray-bg position-relative ">
+                <div class="container">
+                    <div class="event-detail-wrap w-100">
+                        <div class="event-detail-img-info w-100">
+                            <h2 class="mb-0" th:text="${event.title}">Contact information for the counselor school</h2>
+                            <p class="mb-0" th:text="${event.detail}"></p>
+                            <img class="img-fluid w-100" th:src="@{${event.imagePath}}"
+                                alt="Event Detail Image">
+                            <ul class="event-infolist d-inline-flex align-items-center mb-0 list-unstyled">
+                                <li>
+                                    <i class="far fa-clock"></i>
+                                    <strong class="d-block">Start Time</strong>
+                                    <p class="mb-0">8:00 am <br> [[${#dates.format(event.startDate, 'dd MMMM, yyyy')}]]</p>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <strong class="d-block">Location</strong>
+                                    <p class="mb-0">Ganpat University <br> Gujarat</p>
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i>
+                                    <strong class="d-block">End Date</strong>
+                                    <p class="mb-0">5:00 pm <br> [[${#dates.format(event.lastDate, 'dd MMMM, yyyy')}]]</p>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="event-detail-desc w-100">
+                            <p class="mb-0" th:text="${event.detail}"></p>
+                            <br/><br/>
+                            <div class="share w-100">
+                                <span>Share</span>
+                                <div class="social-links3">
+                                    <a class="facebook rounded-circle" href="javascript:void(0);" title="Facebook"
+                                        target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                    <a class="twitter rounded-circle" href="javascript:void(0);" title="Twitter"
+                                        target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a class="vimeo rounded-circle" href="javascript:void(0);" title="Vimeo"
+                                        target="_blank"><i class="fab fa-vimeo-v"></i></a>
+                                    <a class="youtube rounded-circle" href="javascript:void(0);" title="Youtube"
+                                        target="_blank"><i class="fab fa-youtube"></i></a>
+                                    <a class="pinterest rounded-circle" href="javascript:void(0);" title="Pinterest"
+                                        target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                                </div>
+                            </div>
+                            <div class="view-all mt-70 w-100">
+                                <a class="thm-btn brd-btn" th:href="@{/event-registration/{id}(id = ${event.id})}" title="">Registration</a>
+                            </div>
+                        </div>
+                    </div><!-- Event Detail Wrap -->
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

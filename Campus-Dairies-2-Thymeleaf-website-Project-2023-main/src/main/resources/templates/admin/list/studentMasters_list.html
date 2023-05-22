@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="admin/index">
+
+<head>
+	<title>StudentMaster List</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content1">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+
+							<h1>StudentMaster</h1>
+						</div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">StudentMaster</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+
+
+							<div class="card">
+								<div class="card-header">
+									<a th:href="@{/studentMaster/create}" class="btn btn-primary btn-sm">ADD NEW
+										STUDENTMASTER</a>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<table id="example1" class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>Id</th>
+												<th>User</th>
+												<th>Name</th>
+												<th>Gender</th>
+												<th>Phone</th>
+												<th>Photo</th>
+												<th>City</th>
+												<th>Department</th>
+												<th>Course</th>
+												<th>Semester</th>
+												<th style="width: 150px">Actions</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="studentMaster : ${listStudentMasters}">
+												<td th:text="${studentMaster.id}"></td>
+												<td th:text="${studentMaster.user.id}"></td>
+												<td th:text="${studentMaster.user.name}"></td>
+												<td th:text="${studentMaster.gender}"></td>
+												<td th:text="${studentMaster.phone}"></td>
+												<td><img th:src=@{${studentMaster.imagePath}} style="width: 60px" />
+												</td>
+												<td th:text="${studentMaster.city}"></td>
+												<td th:text="${studentMaster.department}"></td>
+												<td th:text="${studentMaster.course}"></td>
+												<td th:text="${studentMaster.semester}"></td>
+												<td><a th:href="@{/studentMaster/update/{id}(id=${studentMaster.id})}"
+														class="btn btn-success btn-sm">UPDATE</a> <a
+														th:href="@{/studentMaster/delete/{id}(id=${studentMaster.id})}"
+														onclick="return confirm('Do you want to DELETE?')"
+														class="btn btn-danger btn-sm">DELETE</a></td>
+											</tr>
+										</tbody>
+										<tfoot>
+											<tr>
+												<th>Id</th>
+												<th>User</th>
+												<th>Name</th>
+												<th>Gender</th>
+												<th>Phone</th>
+												<th>Photo</th>
+												<th>City</th>
+												<th>Department</th>
+												<th>Course</th>
+												<th>Semester</th>
+												<th>Actions</th>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+	</div>
+</body>
+<html>

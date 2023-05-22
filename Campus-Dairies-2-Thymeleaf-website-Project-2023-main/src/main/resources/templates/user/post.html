@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="user/template">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="icon" href="assets/images/favicon.png" sizes="35x35" type="image/png">
+    <title>Post</title>
+
+</head>
+
+<body>
+    <div layout:fragment="content1">
+
+
+        <section>
+            <div class="w-100 pt-180 pb-110 black-layer opc45 position-relative">
+                <div class="fixed-bg" style="background-image: url(assets/images/pg-tp-bg.jpg);"></div>
+                <div class="container">
+                    <div class="pg-tp-wrp text-center w-100">
+                        <h1 class="mb-0">Posts Directory</h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html" title="Home">Home</a></li>
+                            <li class="breadcrumb-item active">Posts</li>
+                        </ol>
+                    </div><!-- Page Top Wrap -->
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="w-100 pt-50 pb-100 gray-bg position-relative">
+            <div class="col-12">
+            <th:block th:if="${session.uid == null}">
+            <h5>~~  Login for upload post  ~~</h5>
+            </th:block>
+            	<th:block th:if="${session.uid != null}">
+            	<a th:href="@{/uploadpost}"><button  class="btn btn-primary btn-block"  >Upload Post</button></a>
+                </th:block>
+               </div>
+                <div class="container">
+                    <div class="listing-layout mt-70 w-100">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-4" th:each="post:${listPost}">
+                                <div class="list-post-box2 position-relative w-100">
+                                    <div class="list-post-img2 overflow-hidden position-relative w-100">
+                                        <img style="height:280px; weight:380px" class="img-fluid" th:src="@{${post.imagePath}}"
+                                            alt="List Post Image 1">
+                                        
+                                        <div
+                                            class="list-post-like-rate position-absolute d-flex flex-wrap align-items-center justify-content-between">
+                                            <a class="list-post-like2" th:href="@{/like/{id}(id = ${post.id})}" title=""><i
+                                                    class="far fa-thumbs-up thm-clr"></i> Like ([[${post.likeCount}]])</a>
+                                                    <a class="list-post-like2" th:href="@{/dislike/{id}(id = ${post.id})}" title=""><i
+                                                    class="far fa-thumbs-down thm-clr"></i> Dislike ([[${post.dislikeCount}]])</a>
+                                                    <span
+                                                class="list-post-rate text-color2"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><span>4.5</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="list-post-info2 w-100">
+                                        <ul class="post-meta2 d-inline-flex mb-0 list-unstyled">
+                                            <li><i class="thm-clr far fa-clock" th:text="${post.entryDate}"></i> 28,
+                                                </li>
+                                            <li><i class="thm-clr fas fa-users"></i>50</li>
+                                        </ul>
+                                        
+                                        <p style="min-height: 100px" class="mb-0" th:text="${post.message}">
+                                        </p>
+
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- Listing Layout -->
+                    
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

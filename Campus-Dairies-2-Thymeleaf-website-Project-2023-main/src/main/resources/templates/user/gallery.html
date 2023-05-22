@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="user/template">
+
+<!-- Mirrored from jthemes.net/themes/html/neondir/gallery.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Mar 2023 05:51:04 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="icon" th:href="@{/assets/images/favicon.png}" sizes="35x35" type="image/png">
+    <title>TPhoto Gallery</title>
+
+</head>
+
+<body>
+    <div layout:fragment="content1">
+        <section>
+            <div class="w-100 pt-180 pb-110 black-layer opc45 position-relative">
+                <div class="fixed-bg" style="background-image: url(/assets/images/pg-tp-bg.jpg);"></div>
+                <div class="container">
+                    <div class="pg-tp-wrp text-center w-100">
+                        <h1 class="mb-0">Gallery page</h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html" title="Home">Home</a></li>
+                            <li class="breadcrumb-item active">Gallery page</li>
+                        </ol>
+                    </div><!-- Page Top Wrap -->
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="w-100 pt-140 pb-130 gray-bg position-relative">
+                <div class="container">
+                    <div class="gallery-wrap w-100">
+                        <div class="row mrg10">
+                            <div class="col-md-6 col-sm-6 col-lg-4" th:each="photosGallery:${listPhotosGallery2}">
+                                <div class="gallery-box brd-rd20 overflow-hidden position-relative w-100">
+                                    <img class="img-fluid w-100" th:src="@{${photosGallery.imagePath}}"
+                                        alt="Gallery Image 1">
+                                    <div class="gallery-info position-absolute w-100">
+                                        <a class="rounded-circle thm-bg" th:href="@{${photosGallery.imagePath}}"
+                                            data-fancybox="gallery"><i class="fas fa-plus"></i></a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- Gallery Wrap -->
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+<!-- Mirrored from jthemes.net/themes/html/neondir/gallery.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Mar 2023 05:51:07 GMT -->
+
+</html>

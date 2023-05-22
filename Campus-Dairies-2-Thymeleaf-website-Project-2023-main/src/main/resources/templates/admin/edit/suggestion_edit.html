@@ -1,0 +1,99 @@
+<!DOCTYPE html> 
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="admin/index"> 
+<head> 
+    <title>Suggestion Edit</title> 
+</head> 
+<body> 
+
+ <div layout:fragment="content1"> 
+<div class="content-wrapper"> 
+    <!-- Content Header (Page header) --> 
+    <section class="content-header"> 
+      <div class="container-fluid"> 
+        <div class="row mb-2"> 
+          <div class="col-sm-6"> 
+          </div> 
+          <div class="col-sm-6"> 
+            <ol class="breadcrumb float-sm-right"> 
+              <li class="breadcrumb-item"><a href="#">Home</a></li> 
+              <li class="breadcrumb-item active">Suggestion</li> 
+            </ol> 
+          </div> 
+        </div> 
+      </div><!-- /.container-fluid --> 
+    </section> 
+ 
+    <!-- Main content --> 
+    <section class="content"> 
+      <div class="container-fluid"> 
+        <div class="row"> 
+          <!-- left column --> 
+          <div class="col-md-12"> 
+            <!-- jquery validation --> 
+            <div class="card card-primary"> 
+              <div class="card-header"> 
+              <h3>Suggestion Update</h3> 
+              </div> 
+              <!-- /.card-header --> 
+              <!-- form start --> 
+              <form id="quickForm"  method= "post" th:action= "@{/admin/suggestion/save}" th:object="${suggestion}"> 
+                <div class="card-body"> 
+<div class="form-group"> 
+                    <label for="id">Id</label> 
+                    <input type="text" name="id" class="form-control" id="id" placeholder="Enter Id "th:value="${suggestion.getId()}" readonly = "readonly"> 
+                  </div> 
+<div class="form-group"> 
+                    <label for="user">User</label> 
+                   
+ <select th:field="${suggestion.user}" name="user" class="form-control col-md-3">  
+  <option th:each="user:${listUsers}"  
+         th:text="${user.getName()}"  
+         th:value="${user.getId()}"></option>  
+ </select>  
+                  </div> 
+<div class="form-group"> 
+                    <label for="message">Message</label> 
+                    <input type="text" name="message" class="form-control" id="message" placeholder="Enter Message "th:value="${suggestion.getMessage()}"> 
+                  </div> 
+<div class="form-group"> 
+                    <label for="entryDate">Entry Date</label> 
+                    <input type="date" name="entryDate" class="form-control" id="entryDate" placeholder="Enter Entry Date "th:value="${suggestion.getEntryDate()}"> 
+                  </div> 
+<div class="form-group"> 
+                    <label for="likeCount">Like Count</label> 
+                    <input type="text" name="likeCount" class="form-control" id="likeCount" placeholder="Enter Like Count "th:value="${suggestion.getLikeCount()}"> 
+                  </div> 
+<div class="form-group"> 
+                    <label for="dislikeCount">Dislike Count</label> 
+                    <input type="text" name="dislikeCount" class="form-control" id="dislikeCount" placeholder="Enter Dislike Count "th:value="${suggestion.getDislikeCount()}"> 
+                  </div> 
+                   
+                   
+                </div> 
+                <!-- /.card-body --> 
+                <div class="card-footer"> 
+                  <button type="submit" class="btn btn-primary btn-sm">UPDATE</button> 
+                  <a th:href="@{/admin/suggestion/index}"><button type="button" class="btn btn-dark btn-sm">BACK</button></a> 
+                </div> 
+              </form> 
+            </div> 
+            <!-- /.card --> 
+            </div> 
+          <!--/.col (left) --> 
+          <!-- right column --> 
+          <div class="col-md-6"> 
+ 
+          </div> 
+          <!--/.col (right) --> 
+        </div> 
+        <!-- /.row --> 
+      </div><!-- /.container-fluid --> 
+    </section> 
+    <!-- /.content --> 
+  </div> 
+  </div> 
+<section layout:fragment= "script1">
+</section>
+
+ </body>
+ <html>

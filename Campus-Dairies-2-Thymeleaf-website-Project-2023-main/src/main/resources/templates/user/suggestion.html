@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="user/template">
+
+<!-- Mirrored from jthemes.net/themes/html/neondir/listing-explore-map-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Mar 2023 05:50:42 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="icon" href="assets/images/favicon.png" sizes="35x35" type="image/png">
+    <title>Suggestion</title>
+</head>
+
+<body>
+    <div layout:fragment="content1">
+        <div class="search-wrap w-100 d-flex flex-wrap align-items-center justify-content-center">
+            <span class="search-cls-btn rounded-circle"><i class="fas fa-times"></i></span>
+            <form class="w-100">
+                <input type="text" placeholder="Search here....">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div><!-- Search Wrap -->
+        <section>
+            <div class="w-100 pt-180 pb-110 black-layer opc45 position-relative">
+                <div class="fixed-bg" style="background-image: url(/assets/images/pg-tp-bg.jpg);"></div>
+                <div class="container">
+                    <div class="pg-tp-wrp text-center w-100">
+                        <h1 class="mb-0">Suggestion</h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html" title="Home">Home</a></li>
+                            <li class="breadcrumb-item active">Sueggestion</li>
+                        </ol>
+                    </div><!-- Page Top Wrap -->
+                </div>
+            </div>
+        </section>
+        <!-- list of data -->
+        <section>
+            <div class="w-100 pb-120 gray-bg position-relative">
+                <div class="reviewer-reviews-wrap w-100">
+                    <div class="reviewer-review-data w-100" style="padding-top: 6%;">
+                        <div class="container">
+                            <div class="reviewer-review-data-inner bg-white w-100">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-lg-8">
+                                        <ul class="reviewer-review-list list-unstyled w-100">
+                                            <li th:each="suggestion:${listSuggestion}">
+                                                <div class="reviewer-review-box w-100">
+                                                    <img class="img-fluid" src="assets/images/resources/review-img1.jpg"
+                                                        alt="Review Image 1">
+                                                    <div class="reviewer-review-info">
+                                                        <div
+                                                            class="reviewer-review-info-top d-flex flex-wrap justify-content-between">
+                                                            <div class="reviewer-review-info-top-inner">
+                                                                <h3 class="mb-0"><a href="javascript:void(0);" title=""
+                                                                        th:text="${suggestion.user.name}"></a></h3>
+                                                                <span class="d-block"
+                                                                    th:text="${suggestion.entryDate}"></span>
+                                                            </div>
+                                                            <div class="reviewer-review-info-top-inner">
+                                                                <span class="reviewer-rate"><i
+                                                                        class="fa fa-thumbs-up"></i>&nbsp; 30 <i
+                                                                        class="fa fa-thumbs-down"></i>&nbsp;10</span>
+
+                                                            </div>
+                                                        </div>
+                                                        <p class="mb-0" th:text="${suggestion.message}"></p>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-lg-4">
+                                        <div class="reviewer-review-widget w-100">
+                                            <h3 class="mb-0">Suggstion Message</h3>
+                                            <form id="suggestion-form" class="review-form w-100"
+                                                th:action="@{/suggestion}" method="post">
+
+                                                <div class="field w-100"><textarea placeholder="Message" name="message"
+                                                        th:field="${suggestion.message}"></textarea></div>
+
+
+                                                <div class="field w-100"><span class="check-box"><input type="checkbox"
+                                                            id="review-check"><label for="review-check">Save my name,
+                                                            email, and website in this browser for the next time I
+                                                            comment.</label></span></div>
+                                                <button class="thm-btn" type="submit">Suggstion Send</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Reviewer Reviews Wrap -->
+            </div>
+        </section>
+    </div>
+</body>
+
+<!-- Mirrored from jthemes.net/themes/html/neondir/listing-explore-map-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Mar 2023 05:50:43 GMT -->
+
+</html>

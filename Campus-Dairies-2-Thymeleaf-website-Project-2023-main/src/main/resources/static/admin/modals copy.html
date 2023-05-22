@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Modals & Alerts</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>
+                Modals & Alerts
+                <small>new</small>
+              </h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Modals & Alerts</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="card card-success card-outline">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i class="fas fa-edit"></i>
+                    SweetAlert2 Examples
+                  </h3>
+                </div>
+                <div class="card-body">
+                  <button type="button" class="btn btn-success swalDefaultSuccess">
+                    Launch Success Toast
+                  </button>
+                  <button type="button" class="btn btn-info swalDefaultInfo">
+                    Launch Info Toast
+                  </button>
+                  <button type="button" class="btn btn-danger swalDefaultError">
+                    Launch Error Toast
+                  </button>
+                  <button type="button" class="btn btn-warning swalDefaultWarning">
+                    Launch Warning Toast
+                  </button>
+                  <button type="button" class="btn btn-default swalDefaultQuestion">
+                    Launch Question Toast
+                  </button>
+                  <div class="text-muted mt-3">
+                    For more examples look at <a
+                      href="https://sweetalert2.github.io/">https://sweetalert2.github.io/</a>
+                  </div>
+                </div>
+                <!-- /.card -->
+              </div>
+
+
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- ./row -->
+        </div><!-- /.container-fluid -->
+
+
+
+
+
+
+
+
+
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.2.0
+      </div>
+      <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+  <!-- Toastr -->
+
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="dist/js/demo.js"></script>
+  <!-- Page specific script -->
+  <script>
+    $(function () {
+      var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      $('.swalDefaultSuccess').click(function () {
+        Toast.fire({
+          icon: 'success',
+          title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+        })
+      });
+      $('.swalDefaultInfo').click(function () {
+        Toast.fire({
+          icon: 'info',
+          title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+        })
+      });
+      $('.swalDefaultError').click(function () {
+        Toast.fire({
+          icon: 'error',
+          title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+        })
+      });
+      $('.swalDefaultWarning').click(function () {
+        Toast.fire({
+          icon: 'warning',
+          title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+        })
+      });
+      $('.swalDefaultQuestion').click(function () {
+        Toast.fire({
+          icon: 'question',
+          title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+        })
+      });
+
+
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="user/template">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="icon" href="assets/images/favicon.png" sizes="35x35" type="image/png">
+    <title>Event</title>
+
+</head>
+
+<body>
+    <div layout:fragment="content1">
+
+
+        <section>
+            <div class="w-100 pt-180 pb-110 black-layer opc45 position-relative">
+                <div class="fixed-bg" style="background-image: url(assets/images/pg-tp-bg.jpg);"></div>
+                <div class="container">
+                    <div class="pg-tp-wrp text-center w-100">
+                        <h1 class="mb-0">Events Directory</h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html" title="Home">Home</a></li>
+                            <li class="breadcrumb-item active">Events</li>
+                        </ol>
+                    </div><!-- Page Top Wrap -->
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="w-100 pt-50 pb-100 gray-bg position-relative">
+                <div class="container">
+
+                    <div class="listing-layout mt-70 w-100">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-4" th:each="event:${listEvent}">
+                                <div class="list-post-box2 position-relative w-100">
+                                    <div class="list-post-img2 overflow-hidden position-relative w-100">
+                                        <img class="img-fluid w-100" th:src="@{${event.imagePath}}"
+                                            alt="List Post Image 1">
+                                        <span class="list-post-stats rounded-pill position-absolute">Now Closed</span>
+                                        <div
+                                            class="list-post-like-rate position-absolute d-flex flex-wrap align-items-center justify-content-between">
+                                            <a class="list-post-like2" href="javascript:void(0);" title=""><i
+                                                    class="far fa-heart thm-clr"></i>Like</a><span
+                                                class="list-post-rate text-color2"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><span>4.5</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="list-post-info2 w-100">
+                                        <ul class="post-meta2 d-inline-flex mb-0 list-unstyled">
+                                            <li><i class="thm-clr far fa-clock" th:text="${event.startDate}"></i>
+                                                    </li>
+                                            <li><i class="thm-clr fas fa-users"></i>50</li>
+                                        </ul>
+                                        <h3 class="mb-0"><a th:text="${event.title}" title=""></a></h3>
+                                        <p class="mb-0" th:text="${event.detail}">
+                                        </p>
+
+                                        <a class="list-post-event-btn" th:href="@{/event-detail/{id}(id = ${event.id})}" title=""> Event
+                                            Detail<i class="fas fa-arrow-right"></i></a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- Listing Layout -->
+                    
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

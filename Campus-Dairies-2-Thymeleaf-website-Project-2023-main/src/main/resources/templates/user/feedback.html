@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="user/template">
+
+<head>
+    <meta charset=" UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="icon" href="assets/images/favicon.png" sizes="35x35" type="image/png">
+    <title>Feedback </title>
+
+</head>
+
+<body>
+    <div layout:fragment="content1">
+        <section>
+            <div class="w-100 pt-180 pb-110 black-layer opc45 position-relative">
+                <div class="fixed-bg" style="background-image: url(assets/images/pg-tp-bg.jpg);"></div>
+                <div class="container">
+                    <div class="pg-tp-wrp text-center w-100">
+                        <h1 class="mb-0">Feedback</h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html" title="Home">Home</a></li>
+                            <li class="breadcrumb-item active">Feedback</li>
+                        </ol>
+                    </div><!-- Page Top Wrap -->
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="w-100 pb-100 pt-100 gray-bg position-relative">
+                <div class="container">
+                    <div class="get-touch-wrap w-100">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-12 col-lg-4">
+                                <div class="get-info w-100">
+                                    <h2 class="mb-0">Get In Touch</h2>
+                                    <p class="mb-0">If you are interested in working with us, please get in touch.</p>
+                                    <ul class="get-info-list d-inline-block mb-0 list-unstyled w-100">
+                                        <li><i class="fas fa-map-marked-alt rounded-circle"></i>Ganpat University
+                                            Ganpat Vidyanagar, Mehsana-Gandhinagar Highway,
+                                            PO - 384012,
+                                            North Gujarat, INDIA</li>
+                                        <li><i class="fas fa-phone-volume rounded-circle"></i>1800 233 12345 - Central
+                                            Office</li>
+                                        <li><i class="far fa-paper-plane rounded-circle"></i><a
+                                                href="javascript:void(0);" title=""> info@ganpatuniversity.ac.in</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-sm-12 col-lg-8">
+                                <div class="form-wrap w-100">
+                                    <h2 class="mb-0">FeedBack</h2>
+                                    <form class="review-form w-100" id="feedback-form" th:action="@{/feedback}"
+                                        method="post">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-lg-12">
+                                                <div class="form-group w-100">
+                                                    <div class="response w-100"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-lg-4">
+                                                <input class="w-100 brd-rd5 mt-30 name" type="text" name="name"
+                                                    placeholder="Name" th:field="${feedback.name}">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-lg-4">
+                                                <input class="w-100 brd-rd5 mt-30 email" type="email" name="email"
+                                                    placeholder="Email *" th:field="${feedback.email}">
+                                            </div>
+                                            <div class="col-md-12 col-sm-6 col-lg-4">
+                                                <input class="w-100 brd-rd5 mt-30 subject" type="text" name="subject"
+                                                    placeholder="Subject" th:field="${feedback.subject}">
+                                            </div>
+
+                                            <div class="col-md-12 col-sm-12 col-lg-12">
+                                                <textarea class="w-100 brd-rd5 mt-30 contact_message"
+                                                    name="contact_message" placeholder="Your Message"
+                                                    th:field="${feedback.message}"></textarea>
+
+                                                <div class="col-md-12 col-sm-6 col-lg-4">
+                                                    <input class="w-100 brd-rd5 mt-30 subject" type="text"
+                                                        placeholder="Status" name="status" th:field="${feedback.status}"
+                                                        value="1">
+                                                </div>
+
+                                                <button class="thm-btn mt-50" id="submit" name="submit"
+                                                    type="submit">SEND
+                                                    MESSAGE</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Get In Touch Style --->
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+<!-- Mirrored from jthemes.net/themes/html/neondir/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Mar 2023 05:51:19 GMT -->
+
+</html>
